@@ -1,0 +1,16 @@
+<phpunit bootstrap="vendor/autoload.php">
+    <testsuites>
+        <testsuite name="sprout">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-html" target="log/coverage" />
+        <log type="testdox-html" target="log/testdox.html" />
+    </logging>
+</phpunit>

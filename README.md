@@ -36,3 +36,5 @@ echo Sprout\root('html', 'lang="en"')->mark('h')
     ->root()
 ;
 ```
+
+[e]: http://emmet.io/

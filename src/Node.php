@@ -2,6 +2,7 @@
 
 namespace Sprout;
 
+use Sprout\Exception\InvalidArgumentException;
 use Sprout\Exception\NodeNotFoundException;
 
 class Node
@@ -160,6 +161,38 @@ class Node
         $this->content = $text;
 
         return $this;
+    }
+
+    /**
+     * Repeats node or labeled subtree given number of times.
+     *
+     * @param int         $number
+     * @param string|null $label
+     *
+     * @return self
+     *
+     * @throws InvalidArgumentException if $number less than 1
+     */
+    public function times(int $number, string $label = null)
+    {
+        if ($number < 1) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    '%s() expects first parameter to be positive integer, %d given',
+                    __METHOD__,
+                    $number
+                )
+            );
+        }
+
+        $child = $label === null ? $this : $this->to($label);
+        $parent = $child->parent;
+
+        while (--$number) {
+            $parent->insert($child);
+        }
+
+        return $parent;
     }
 
     /**

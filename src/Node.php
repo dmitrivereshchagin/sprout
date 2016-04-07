@@ -2,8 +2,10 @@
 
 namespace Sprout;
 
-use Sprout\Exception\InvalidArgumentException;
-use Sprout\Exception\NodeNotFoundException;
+use Sprout\Exception\{
+    InvalidArgumentException,
+    NodeNotFoundException
+};
 
 class Node
 {

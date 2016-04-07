@@ -5,6 +5,8 @@ namespace Sprout;
 
 if (!function_exists('Sprout\root')) {
     /**
+     * Creates root node.
+     *
      * @param string $name
      * @param string $attributes
      *

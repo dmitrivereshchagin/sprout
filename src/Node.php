@@ -11,23 +11,23 @@ use Sprout\Exception\{
 class Node
 {
     /**
-     * @var string
+     * @var string Node name
      */
     private $name;
     /**
-     * @var string
+     * @var string|null Node attributes
      */
     private $attributes;
     /**
-     * @var string
+     * @var self|null Parent node
      */
     private $parent;
     /**
-     * @var self[]|string|null
+     * @var self[]|string|null Node content
      */
     private $content;
     /**
-     * @var string
+     * @var string|null Node label
      */
     private $label;
 
@@ -44,11 +44,24 @@ class Node
         $this->content = [];
     }
 
+    /**
+     * Dynamically creates new child of current node.
+     *
+     * @param string $name
+     * @param array  $arguments
+     *
+     * @return static
+     */
     public function __call($name, $arguments): self
     {
         return $this->add($name, ...$arguments);
     }
 
+    /**
+     * Returns string representation of current node.
+     *
+     * @return string
+     */
     public function __toString(): string
     {
         return $this->string();
@@ -73,7 +86,7 @@ class Node
     /**
      * Inserts new child nodes.
      *
-     * @param self $nodes,...
+     * @param self ...$nodes
      *
      * @return $this
      */
@@ -130,7 +143,7 @@ class Node
     }
 
     /**
-     * Returns string representaion of current subtree.
+     * Returns string representation of current node.
      *
      * @return string
      */
@@ -167,14 +180,14 @@ class Node
     }
 
     /**
-     * Repeats node or labeled subtree given number of times.
+     * Repeats current or marked node given number of times.
      *
      * @param int         $number
      * @param string|null $label
      *
      * @return self
      *
-     * @throws InvalidArgumentException if $number less than 1
+     * @throws InvalidArgumentException if $number less than one
      */
     public function times(int $number, string $label = null): self
     {
@@ -199,7 +212,7 @@ class Node
      *
      * @return self
      *
-     * @throws NodeNotFoundException
+     * @throws NodeNotFoundException if parent node does not exist
      */
     public function up(): self
     {
@@ -211,13 +224,13 @@ class Node
     }
 
     /**
-     * Returns parent node marked with label.
+     * Returns current node or first of its parents which is marked with label.
      *
      * @param string $label
      *
      * @return self
      *
-     * @throws NodeNotFoundException
+     * @throws NodeNotFoundException if node not found
      */
     public function to(string $label): self
     {
@@ -269,7 +282,7 @@ class Node
     }
 
     /**
-     * Encloses node content with start-tag and end-tag.
+     * Returns node content enclosed with start-tag and end-tag.
      *
      * @param string $content
      *
@@ -281,6 +294,8 @@ class Node
     }
 
     /**
+     * Returns current node or first of its parents for which predicate is true.
+     *
      * @param callable $predicate
      *
      * @return self|null

@@ -177,11 +177,7 @@ class Node
     {
         if ($number < 1) {
             throw new InvalidArgumentException(
-                sprintf(
-                    '%s() expects first parameter to be positive integer, %d given',
-                    __METHOD__,
-                    $number
-                )
+                'Number of times must be positive'
             );
         }
 

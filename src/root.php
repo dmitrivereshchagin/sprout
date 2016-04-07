@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Sprout;
 
@@ -9,7 +10,7 @@ if (!function_exists('Sprout\root')) {
      *
      * @return Node
      */
-    function root(string $name, string $attributes = '')
+    function root(string $name, string $attributes = ''): Node
     {
         return new Node($name, $attributes);
     }

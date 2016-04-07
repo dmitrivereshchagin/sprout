@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Sprout;
 
@@ -43,12 +44,12 @@ class Node
         $this->content = [];
     }
 
-    public function __call($name, $arguments)
+    public function __call($name, $arguments): self
     {
         return $this->add($name, ...$arguments);
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->string();
     }
@@ -61,7 +62,7 @@ class Node
      *
      * @return static
      */
-    public function add(string $name, string $attributes = '')
+    public function add(string $name, string $attributes = ''): self
     {
         $node = new static($name, $attributes);
         $this->insert($node);
@@ -76,7 +77,7 @@ class Node
      *
      * @return $this
      */
-    public function insert(self ...$nodes)
+    public function insert(self ...$nodes): self
     {
         if (!is_array($this->content)) {
             $this->content = [];
@@ -95,7 +96,7 @@ class Node
      *
      * @return $this
      */
-    public function merge()
+    public function merge(): self
     {
         $this->content = null;
 
@@ -109,7 +110,7 @@ class Node
      *
      * @return $this
      */
-    public function mark(string $label)
+    public function mark(string $label): self
     {
         $this->label = $label;
 
@@ -121,7 +122,7 @@ class Node
      *
      * @return self
      */
-    public function root()
+    public function root(): self
     {
         return $this->rise(function ($node) {
             return !$node->parent;
@@ -133,7 +134,7 @@ class Node
      *
      * @return string
      */
-    public function string()
+    public function string(): string
     {
         if (is_string($this->content)) {
             return $this->enclose($this->content);
@@ -158,7 +159,7 @@ class Node
      *
      * @return $this
      */
-    public function text(string $text)
+    public function text(string $text): self
     {
         $this->content = $text;
 
@@ -175,7 +176,7 @@ class Node
      *
      * @throws InvalidArgumentException if $number less than 1
      */
-    public function times(int $number, string $label = null)
+    public function times(int $number, string $label = null): self
     {
         if ($number < 1) {
             throw new InvalidArgumentException(
@@ -200,7 +201,7 @@ class Node
      *
      * @throws NodeNotFoundException
      */
-    public function up()
+    public function up(): self
     {
         if (!$this->parent) {
             throw new NodeNotFoundException('Parent node does not exist');
@@ -218,7 +219,7 @@ class Node
      *
      * @throws NodeNotFoundException
      */
-    public function to(string $label)
+    public function to(string $label): self
     {
         $node = $this->rise(function ($node) use ($label) {
             return $node->label === $label;
@@ -238,7 +239,7 @@ class Node
      *
      * @return string
      */
-    protected function start()
+    protected function start(): string
     {
         if ($this->attributes) {
             return "<$this->name $this->attributes>";
@@ -252,7 +253,7 @@ class Node
      *
      * @return string
      */
-    protected function end()
+    protected function end(): string
     {
         return "</$this->name>";
     }
@@ -262,7 +263,7 @@ class Node
      *
      * @return string
      */
-    protected function empty()
+    protected function empty(): string
     {
         return $this->start();
     }
@@ -274,7 +275,7 @@ class Node
      *
      * @return string
      */
-    protected function enclose(string $content)
+    protected function enclose(string $content): string
     {
         return $this->start().$content.$this->end();
     }

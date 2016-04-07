@@ -87,7 +87,7 @@ class NodeTest extends \PHPUnit_Framework_TestCase
      */
     public function testCanBeTurnedIntoEmptyNode(Node $foo)
     {
-        $this->assertEquals('<foo>', (string) $foo->join());
+        $this->assertEquals('<foo>', (string) $foo->merge());
     }
 
     /**
@@ -103,7 +103,7 @@ class NodeTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             '<foo><bar baz="qux"></bar></foo>',
-            (string) $foo->join()->insert($bar)
+            (string) $foo->merge()->insert($bar)
         );
     }
 

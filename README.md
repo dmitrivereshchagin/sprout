@@ -8,7 +8,7 @@ You can build your DOM from subtrees
 
 ```php
 $head = Sprout\root('head')
-    ->meta('charset="utf-8"')->join()
+    ->meta('charset="utf-8"')->merge()
     ->up()
     ->title()->text('Title')
     ->root()

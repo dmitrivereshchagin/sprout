@@ -93,7 +93,7 @@ class Node
      *
      * @return $this
      */
-    public function join()
+    public function merge()
     {
         $this->content = null;
 

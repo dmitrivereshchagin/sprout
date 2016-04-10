@@ -186,7 +186,7 @@ class Node
         }
 
         $child = $label === null ? $this : $this->to($label);
-        $parent = $child->parent;
+        $parent = $child->up();
 
         while (--$number) {
             $parent->insert($child);

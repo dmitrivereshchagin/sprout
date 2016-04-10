@@ -131,6 +131,15 @@ class NodeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @depends clone testCanBeConstructedFromName
+     * @expectedException \Sprout\Exception\NodeNotFoundException
+     */
+    public function testMultipleNodesCanBeAdded2(Node $foo)
+    {
+        $foo->times(3);
+    }
+
+    /**
+     * @depends clone testCanBeConstructedFromName
      * @expectedException \Sprout\Exception\InvalidArgumentException
      */
     public function testMultipleNodesCannotBeAddedZeroTimes(Node $foo)

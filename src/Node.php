@@ -78,6 +78,7 @@ class Node
     public function add(string $name, string $attributes = ''): self
     {
         $node = new static($name, $attributes);
+
         $this->insert($node);
 
         return $node;
@@ -105,18 +106,6 @@ class Node
     }
 
     /**
-     * Empties current node.
-     *
-     * @return $this
-     */
-    public function merge(): self
-    {
-        $this->content = null;
-
-        return $this;
-    }
-
-    /**
      * Marks current node with label.
      *
      * @param string $label
@@ -126,6 +115,18 @@ class Node
     public function mark(string $label): self
     {
         $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * Empties current node.
+     *
+     * @return $this
+     */
+    public function merge(): self
+    {
+        $this->content = null;
 
         return $this;
     }
@@ -155,6 +156,7 @@ class Node
 
         if (is_array($this->content)) {
             $content = '';
+
             foreach ($this->content as $node) {
                 $content .= $node->string();
             }
@@ -197,7 +199,7 @@ class Node
             );
         }
 
-        $child = $label === null ? $this : $this->to($label);
+        $child = ($label === null) ? $this : $this->to($label);
         $parent = $child->up();
 
         while (--$number) {

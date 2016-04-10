@@ -121,40 +121,40 @@ class NodeTest extends \PHPUnit_Framework_TestCase
     /**
      * @depends clone testCanBeConstructedFromName
      */
-    public function testMultipleNodesCanBeAdded(Node $foo)
+    public function testChildNodesCanBeRepeated(Node $foo)
     {
         $this->assertEquals(
-            '<foo><bar></bar><bar></bar><bar></bar></foo>',
-            (string) $foo->bar()->times(3)
+            '<foo><bar></bar><bar></bar></foo>',
+            (string) $foo->bar()->times(2)
         );
     }
 
     /**
      * @depends clone testCanBeConstructedFromName
-     * @expectedException \Sprout\Exception\NodeNotFoundException
      */
-    public function testMultipleNodesCanBeAdded2(Node $foo)
+    public function testChildNodesCanBeRepeated2(Node $foo)
     {
-        $foo->times(3);
+        $this->assertEquals(
+            '<foo><bar><baz></baz></bar><bar><baz></baz></bar></foo>',
+            (string) $foo->bar()->mark('label')->baz()->times(2, 'label')
+        );
     }
 
     /**
      * @depends clone testCanBeConstructedFromName
      * @expectedException \Sprout\Exception\InvalidArgumentException
      */
-    public function testMultipleNodesCannotBeAddedZeroTimes(Node $foo)
+    public function testChildNodesCanBeRepeated3(Node $foo)
     {
         $foo->baz()->times(0);
     }
 
     /**
      * @depends clone testCanBeConstructedFromName
+     * @expectedException \Sprout\Exception\NodeNotFoundException
      */
-    public function testMultipleSubtreesCanBeAdded(Node $foo)
+    public function testRootNodeCannotBeRepeated(Node $foo)
     {
-        $this->assertEquals(
-            '<foo><bar><baz></baz></bar><bar><baz></baz></bar></foo>',
-            (string) $foo->bar()->mark('label')->baz()->times(2, 'label')
-        );
+        $foo->times(2);
     }
 }

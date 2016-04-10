@@ -2,6 +2,9 @@
 
 namespace Sprout;
 
+/**
+ * @testdox Sprout\root()
+ */
 class RootTest extends \PHPUnit_Framework_TestCase
 {
     public function testRootNodeCanBeCreated()

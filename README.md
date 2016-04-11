@@ -1,4 +1,4 @@
-# Sprout
+# Sprout [![Build Status](https://travis-ci.org/dmitrivereshchagin/sprout.svg?branch=master)](https://travis-ci.org/dmitrivereshchagin/sprout)
 
 Simple DOM generator inspired by [Emmet](http://emmet.io/).
 Dumb and fluent.

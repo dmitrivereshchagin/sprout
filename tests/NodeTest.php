@@ -14,7 +14,7 @@ class NodeTest extends \PHPUnit_Framework_TestCase
 
     public function testCanBeConstructedFromNameAndAttributes()
     {
-        $bar = new Node('bar', 'baz="qux"');
+        $bar = new Node('bar', ['baz' => 'qux']);
         $this->assertInstanceOf(Node::class, $bar);
 
         return $bar;

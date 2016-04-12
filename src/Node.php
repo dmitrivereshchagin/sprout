@@ -11,7 +11,7 @@ class Node
      */
     private $name;
     /**
-     * @var string
+     * @var string[]
      */
     private $attributes;
     /**
@@ -31,9 +31,9 @@ class Node
      * Constructor.
      *
      * @param string $name
-     * @param string $attributes
+     * @param string[] $attributes
      */
-    public function __construct(string $name, string $attributes = '')
+    public function __construct(string $name, array $attributes = [])
     {
         $this->name = $name;
         $this->attributes = $attributes;
@@ -54,11 +54,11 @@ class Node
      * Creates new child of current node.
      *
      * @param string $name
-     * @param string $attributes
+     * @param string[] $attributes
      *
      * @return static
      */
-    public function add(string $name, string $attributes = '')
+    public function add(string $name, array $attributes = [])
     {
         $node = new static($name, $attributes);
         $this->insert($node);
@@ -209,11 +209,16 @@ class Node
      */
     protected function start()
     {
-        if ($this->attributes) {
-            return "<$this->name $this->attributes>";
+        if (empty($this->attributes)) {
+            return "<$this->name>";
         }
 
-        return "<$this->name>";
+        $attributesStrings = [];
+        foreach ($this->attributes as $name => $value) {
+            $attributesStrings[] = sprintf('%s="%s"', $name, $value);
+        }
+
+        return sprintf('<%s %s>', $this->name, implode(' ', $attributesStrings));
     }
 
     /**

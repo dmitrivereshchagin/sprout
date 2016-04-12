@@ -34,10 +34,10 @@ class Node
     /**
      * Constructor.
      *
-     * @param string $name
-     * @param string $attributes
+     * @param string      $name
+     * @param string|null $attributes
      */
-    public function __construct(string $name, string $attributes = '')
+    public function __construct(string $name, string $attributes = null)
     {
         $this->name = $name;
         $this->attributes = $attributes;
@@ -70,12 +70,12 @@ class Node
     /**
      * Creates new child of current node.
      *
-     * @param string $name
-     * @param string $attributes
+     * @param string      $name
+     * @param string|null $attributes
      *
      * @return static
      */
-    public function add(string $name, string $attributes = ''): self
+    public function add(string $name, string $attributes = null): self
     {
         $node = new static($name, $attributes);
 
@@ -256,7 +256,7 @@ class Node
      */
     protected function start(): string
     {
-        if ($this->attributes) {
+        if ($this->attributes !== null) {
             return "<$this->name $this->attributes>";
         }
 

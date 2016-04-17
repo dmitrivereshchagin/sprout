@@ -4,25 +4,25 @@ namespace Sprout;
 
 class NodeTest extends \PHPUnit_Framework_TestCase
 {
-    public function testCanBeConstructedFromName()
+    public function testCanBeCreatedFromName()
     {
-        $foo = new Node('foo');
+        $foo = Node::create('foo');
         $this->assertInstanceOf(Node::class, $foo);
 
         return $foo;
     }
 
-    public function testCanBeConstructedFromNameAndAttributes()
+    public function testCanBeCreatedFromNameAndAttributes()
     {
-        $bar = new Node('bar', 'baz="qux"');
+        $bar = Node::create('bar', 'baz="qux"');
         $this->assertInstanceOf(Node::class, $bar);
 
         return $bar;
     }
 
     /**
-     * @depends testCanBeConstructedFromName
-     * @depends testCanBeConstructedFromNameAndAttributes
+     * @depends testCanBeCreatedFromName
+     * @depends testCanBeCreatedFromNameAndAttributes
      */
     public function testCanBeCastToString(Node $foo, Node $bar)
     {
@@ -31,7 +31,7 @@ class NodeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends clone testCanBeConstructedFromName
+     * @depends clone testCanBeCreatedFromName
      */
     public function testRootNodeCanBeReached(Node $foo)
     {
@@ -40,7 +40,7 @@ class NodeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends clone testCanBeConstructedFromName
+     * @depends clone testCanBeCreatedFromName
      */
     public function testParentNodeCanBeReached(Node $foo)
     {
@@ -48,7 +48,7 @@ class NodeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends testCanBeConstructedFromName
+     * @depends testCanBeCreatedFromName
      * @expectedException \Sprout\Exception\NodeNotFoundException
      */
     public function testParentOfRootNodeCannotBeReached(Node $foo)
@@ -57,7 +57,7 @@ class NodeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends clone testCanBeConstructedFromName
+     * @depends clone testCanBeCreatedFromName
      */
     public function testMarkedNodeCanBeReached(Node $foo)
     {
@@ -66,7 +66,7 @@ class NodeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends testCanBeConstructedFromName
+     * @depends testCanBeCreatedFromName
      * @expectedException \Sprout\Exception\NodeNotFoundException
      */
     public function testNonexistentMarkCannotBeReached(Node $foo)
@@ -75,7 +75,7 @@ class NodeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends clone testCanBeConstructedFromName
+     * @depends clone testCanBeCreatedFromName
      */
     public function testCanBeFilledWithText(Node $foo)
     {
@@ -83,7 +83,7 @@ class NodeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends clone testCanBeConstructedFromName
+     * @depends clone testCanBeCreatedFromName
      */
     public function testCanBeTurnedIntoEmptyNode(Node $foo)
     {
@@ -91,8 +91,8 @@ class NodeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends clone testCanBeConstructedFromName
-     * @depends testCanBeConstructedFromNameAndAttributes
+     * @depends clone testCanBeCreatedFromName
+     * @depends testCanBeCreatedFromNameAndAttributes
      */
     public function testNewNodesCanBeInserted(Node $foo, Node $bar)
     {
@@ -108,7 +108,7 @@ class NodeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends clone testCanBeConstructedFromName
+     * @depends clone testCanBeCreatedFromName
      */
     public function testNewNodeCanBeAdded(Node $foo)
     {
@@ -119,7 +119,7 @@ class NodeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends clone testCanBeConstructedFromName
+     * @depends clone testCanBeCreatedFromName
      */
     public function testChildNodesCanBeRepeated(Node $foo)
     {
@@ -130,7 +130,7 @@ class NodeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends clone testCanBeConstructedFromName
+     * @depends clone testCanBeCreatedFromName
      */
     public function testChildNodesCanBeRepeated2(Node $foo)
     {
@@ -141,7 +141,7 @@ class NodeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends clone testCanBeConstructedFromName
+     * @depends clone testCanBeCreatedFromName
      * @expectedException \Sprout\Exception\InvalidArgumentException
      */
     public function testChildNodesCanBeRepeated3(Node $foo)
@@ -150,7 +150,7 @@ class NodeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @depends clone testCanBeConstructedFromName
+     * @depends clone testCanBeCreatedFromName
      * @expectedException \Sprout\Exception\NodeNotFoundException
      */
     public function testRootNodeCannotBeRepeated(Node $foo)

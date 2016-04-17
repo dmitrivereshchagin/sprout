@@ -8,21 +8,23 @@ Dumb and fluent.
 You can build your DOM from subtrees in the following way
 
 ```php
-$head = Sprout\root('head')
+use Sprout\Node as Root;
+
+$head = Root::create('head')
     ->meta('charset="utf-8"')->merge()
     ->up()
     ->title()->text('Title')
     ->root()
 ;
 
-$body = Sprout\root('body')
+$body = Root::create('body')
     ->h1('id="header"')->text('Header')
     ->up()
     ->p()->text('Paragraph of text.')->times(2)
     ->root()
 ;
 
-echo Sprout\root('html', 'lang="en"')
+echo Root::create('html', 'lang="en"')
     ->insert($head, $body)
 ;
 ```
@@ -30,7 +32,7 @@ echo Sprout\root('html', 'lang="en"')
 Or you can build entire tree using marked nodes
 
 ```php
-echo Sprout\root('html', 'lang="en"')->mark('h')
+echo Root::create('html', 'lang="en"')->mark('h')
     // head subtree
     // ...
     ->to('h')

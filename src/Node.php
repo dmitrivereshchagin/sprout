@@ -250,6 +250,19 @@ class Node
     }
 
     /**
+     * Creates node instance.
+     *
+     * @param string      $name
+     * @param string|null $attributes
+     *
+     * @return static
+     */
+    public static function create(string $name, string $attributes = null): self
+    {
+        return new static($name, $attributes);
+    }
+
+    /**
      * Returns start-tag.
      *
      * @return string

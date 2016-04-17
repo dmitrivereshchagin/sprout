@@ -12,7 +12,6 @@
     "autoload": {
         "psr-4": {
             "Sprout\\": "src/"
-        },
-        "files": ["src/root.php"]
+        }
     }
 }

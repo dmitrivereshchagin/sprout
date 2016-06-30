@@ -3,10 +3,7 @@ declare(strict_types=1);
 
 namespace Sprout;
 
-use Sprout\Exception\{
-    InvalidArgumentException,
-    NodeNotFoundException
-};
+use Sprout\Exception\{InvalidArgumentException, NodeNotFoundException};
 
 class Node
 {

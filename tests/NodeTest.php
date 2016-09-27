@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Sprout;
 
@@ -6,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class NodeTest extends TestCase
 {
-    public function testCanBeCreatedFromName()
+    public function testCanBeCreatedFromName(): Node
     {
         $foo = Node::create('foo');
         $this->assertInstanceOf(Node::class, $foo);
@@ -14,7 +15,7 @@ class NodeTest extends TestCase
         return $foo;
     }
 
-    public function testCanBeCreatedFromNameAndAttributes()
+    public function testCanBeCreatedFromNameAndAttributes(): Node
     {
         $bar = Node::create('bar', 'baz="qux"');
         $this->assertInstanceOf(Node::class, $bar);

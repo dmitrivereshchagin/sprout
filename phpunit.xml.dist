@@ -6,11 +6,7 @@
     </testsuites>
     <filter>
         <whitelist>
-            <directory suffix=".php">src</directory>
+            <directory>src</directory>
         </whitelist>
     </filter>
-    <logging>
-        <log type="coverage-html" target="log/coverage" />
-        <log type="testdox-html" target="log/testdox.html" />
-    </logging>
 </phpunit>

@@ -10,7 +10,7 @@ class NodeTest extends TestCase
     public function testCanBeCreatedFromName(): Node
     {
         $foo = Node::create('foo');
-        $this->assertInstanceOf(Node::class, $foo);
+        $this->assertAttributeEquals('foo', 'name', $foo);
 
         return $foo;
     }
@@ -18,7 +18,8 @@ class NodeTest extends TestCase
     public function testCanBeCreatedFromNameAndAttributes(): Node
     {
         $bar = Node::create('bar', 'baz="qux"');
-        $this->assertInstanceOf(Node::class, $bar);
+        $this->assertAttributeEquals('bar', 'name', $bar);
+        $this->assertAttributeEquals('baz="qux"', 'attributes', $bar);
 
         return $bar;
     }

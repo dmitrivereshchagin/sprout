@@ -2,4 +2,13 @@
 language: php
 php: 7.1
 install: composer install
-script: vendor/bin/phpunit
+script:
+  - >-
+    vendor/bin/php-cs-fixer fix
+    --config=.php_cs.dist
+    --dry-run
+    --path-mode=intersection
+    --using-cache=no
+    --verbose
+    $(git diff --diff-filter=d --name-only $TRAVIS_COMMIT_RANGE)
+  - vendor/bin/phpunit

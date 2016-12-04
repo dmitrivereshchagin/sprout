@@ -92,7 +92,7 @@ class Node
      */
     public function insert(self ...$nodes): self
     {
-        if (!is_array($this->content)) {
+        if (! is_array($this->content)) {
             $this->content = [];
         }
 
@@ -138,7 +138,7 @@ class Node
     public function root(): self
     {
         return $this->rise(function ($node) {
-            return !$node->parent;
+            return ! $node->parent;
         });
     }
 
@@ -217,7 +217,7 @@ class Node
      */
     public function up(): self
     {
-        if (!$this->parent) {
+        if (! $this->parent) {
             throw new NodeNotFoundException('Parent node does not exist');
         }
 
@@ -239,7 +239,7 @@ class Node
             return $node->label === $label;
         });
 
-        if (!$node) {
+        if (! $node) {
             throw new NodeNotFoundException(
                 sprintf('Node with label "%s" not found', $label)
             );
@@ -318,7 +318,7 @@ class Node
     {
         $node = $this;
 
-        while ($node && !$predicate($node)) {
+        while ($node && ! $predicate($node)) {
             $node = $node->parent;
         }
 

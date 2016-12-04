@@ -10,6 +10,7 @@ return PhpCsFixer\Config::create()
         '@Symfony' => true,
         'array_syntax' => ['syntax' => 'short'],
         'declare_strict_types' => true,
+        'not_operator_with_successor_space' => true,
         'ordered_imports' => true,
         'phpdoc_order' => true,
     ])

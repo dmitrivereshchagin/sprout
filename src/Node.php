@@ -269,10 +269,10 @@ class Node
     protected function start(): string
     {
         if ($this->attributes !== null) {
-            return "<$this->name $this->attributes>";
+            return "<{$this->name} {$this->attributes}>";
         }
 
-        return "<$this->name>";
+        return "<{$this->name}>";
     }
 
     /**
@@ -282,7 +282,7 @@ class Node
      */
     protected function end(): string
     {
-        return "</$this->name>";
+        return "</{$this->name}>";
     }
 
     /**

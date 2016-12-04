@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Sprout;
 
-use Sprout\Exception\{InvalidArgumentException, NodeNotFoundException};
+use Sprout\Exception\InvalidArgumentException;
+use Sprout\Exception\NodeNotFoundException;
 
 class Node
 {
@@ -184,9 +186,9 @@ class Node
      * @param int         $number
      * @param string|null $label
      *
-     * @return self
-     *
      * @throws InvalidArgumentException if $number less than one
+     *
+     * @return self
      */
     public function times(int $number, string $label = null): self
     {
@@ -209,9 +211,9 @@ class Node
     /**
      * Returns parent node.
      *
-     * @return self
-     *
      * @throws NodeNotFoundException if parent node does not exist
+     *
+     * @return self
      */
     public function up(): self
     {
@@ -227,9 +229,9 @@ class Node
      *
      * @param string $label
      *
-     * @return self
-     *
      * @throws NodeNotFoundException if node not found
+     *
+     * @return self
      */
     public function to(string $label): self
     {

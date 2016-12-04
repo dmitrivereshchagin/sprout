@@ -12,19 +12,19 @@ class Node
     /**
      * @var string Node name
      */
-    private $name;
+    protected $name;
     /**
      * @var string|null Node attributes
      */
-    private $attributes;
+    protected $attributes;
+    /**
+     * @var self[]|string|null Node content
+     */
+    protected $content;
     /**
      * @var self|null Parent node
      */
     private $parent;
-    /**
-     * @var self[]|string|null Node content
-     */
-    private $content;
     /**
      * @var string|null Node label
      */

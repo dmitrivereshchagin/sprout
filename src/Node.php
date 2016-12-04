@@ -312,7 +312,7 @@ class Node
      *
      * @return self|null
      */
-    private function rise(callable $predicate)
+    private function rise(callable $predicate): ?self
     {
         $node = $this;
 

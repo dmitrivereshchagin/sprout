@@ -5,7 +5,8 @@ Dumb and fluent.
 
 ## Usage
 
-You can build your DOM from subtrees in the following way
+You can build your DOM from subtrees in the following way (you should
+avoid recursion though)
 
 ```php
 use Sprout\Node as Root;

@@ -3,6 +3,12 @@
 Simple DOM generator inspired by [Emmet](http://emmet.io/).
 Dumb and fluent.
 
+## Install
+
+```
+% composer require dmitrivereshchagin/sprout
+```
+
 ## Usage
 
 You can build your DOM from subtrees in the following way (you should
@@ -41,4 +47,9 @@ echo Root::create('html', 'lang="en"')->mark('h')
     // ...
     ->root()
 ;
+```
+## Testing
+
+```
+% composer test
 ```

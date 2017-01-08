@@ -3,9 +3,10 @@ language: php
 php:
   - "7.1"
   - nightly
-install: composer install
+install: composer install --ignore-platform-reqs
 script:
   - >-
+    test "$TRAVIS_PHP_VERSION" = nightly ||
     vendor/bin/php-cs-fixer fix
     --config=.php_cs.dist
     --dry-run

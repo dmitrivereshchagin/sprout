@@ -194,7 +194,7 @@ class Node
     {
         if ($number < 1) {
             throw new InvalidArgumentException(
-                'Number of times must be positive'
+                'Number of times must be positive.'
             );
         }
 
@@ -218,7 +218,7 @@ class Node
     public function up(): self
     {
         if (! $this->parent) {
-            throw new NodeNotFoundException('Parent node does not exist');
+            throw new NodeNotFoundException('Parent node does not exist.');
         }
 
         return $this->parent;
@@ -241,7 +241,7 @@ class Node
 
         if (! $node) {
             throw new NodeNotFoundException(
-                sprintf('Node with label "%s" not found', $label)
+                sprintf('Node with label "%s" not found.', $label)
             );
         }
 

@@ -73,6 +73,7 @@ class NodeTest extends TestCase
     /**
      * @depends testCanBeCreatedFromName
      * @expectedException \Sprout\Exception\NodeNotFoundException
+     * @expectedExceptionMessage "nonexistent"
      */
     public function testNonexistentMarkCannotBeReached(Node $foo): void
     {

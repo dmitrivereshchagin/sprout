@@ -48,6 +48,7 @@ echo Root::create('html', 'lang="en"')->mark('h')
     ->root()
 ;
 ```
+
 ## Testing
 
 ```

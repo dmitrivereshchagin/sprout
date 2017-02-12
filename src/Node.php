@@ -10,23 +10,37 @@ use Sprout\Exception\NodeNotFoundException;
 class Node
 {
     /**
-     * @var string Node name
+     * Node name.
+     *
+     * @var string
      */
     protected $name;
+
     /**
-     * @var string|null Node attributes
+     * Node attributes.
+     *
+     * @var string|null
      */
     protected $attributes;
+
     /**
-     * @var self[]|string|null Node content
+     * Node content.
+     *
+     * @var self[]|string|null
      */
     protected $content;
+
     /**
-     * @var self|null Parent node
+     * Parent node.
+     *
+     * @var self|null
      */
     private $parent;
+
     /**
-     * @var string|null Node label
+     * Node label.
+     *
+     * @var string|null
      */
     private $label;
 

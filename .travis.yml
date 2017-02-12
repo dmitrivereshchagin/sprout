@@ -1,9 +1,15 @@
 ---
 language: php
+
 php:
   - "7.1"
   - nightly
-install: composer install --ignore-platform-reqs
+
+cache:
+  directories: $HOME/.composer/cache/files
+
+install: travis_retry composer install --prefer-dist  --ignore-platform-reqs
+
 script:
   - >-
     test "$TRAVIS_PHP_VERSION" = nightly ||
